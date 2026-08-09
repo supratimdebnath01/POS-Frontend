@@ -1,0 +1,48 @@
+import { Card, CardContent } from '@/components/ui/card'
+import { Table, TableHead, TableHeader, TableRow, TableBody, TableCell } from '@/components/ui/table'
+import React from 'react'
+
+const shiftData={
+  refunds:[
+    {
+      id:234,
+      orderId: 2,
+      reason: "Wrong product received",
+      amount: 899
+    }
+  ]
+}
+
+const RefundsTable = () => {
+  return (
+    <Card>
+      <CardContent>
+        <h2 className='text-xl font-semibold mb-4'>Recent Orders</h2>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[150px]">Refund ID</TableHead>
+              <TableHead className="w-[150px]">Order ID</TableHead>
+              <TableHead className="w-[150px]">Reason</TableHead>
+              <TableHead className="text-right">Amount</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {shiftData.refunds.map((refund)=>(
+              <TableRow key={refund.id}>
+                <TableCell>RED- {refund.id}</TableCell>
+                <TableCell>ORD - {refund.orderId}</TableCell>
+                <TableCell>{refund.reason}</TableCell>
+                <TableCell className="text-right">₹{refund.amount}</TableCell>
+             
+              </TableRow>
+            ))}
+          </TableBody>
+            
+        </Table>
+      </CardContent>
+    </Card>
+  )
+}
+
+export default RefundsTable
