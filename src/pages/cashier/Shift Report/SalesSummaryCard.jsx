@@ -42,7 +42,7 @@ const SalesSummaryCard = () => {
 
         </CardContent>
       </Card>
-  )
-}
+  );
+};
 
 export default SalesSummaryCard

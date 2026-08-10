@@ -18,7 +18,7 @@ const ShiftReportHeader = () => {
         </div>   
        </div>
     </div>
-  )
-}
+  );
+};
 
 export default ShiftReportHeader

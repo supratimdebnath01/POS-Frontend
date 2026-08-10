@@ -42,7 +42,7 @@ const RefundsTable = () => {
         </Table>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 export default RefundsTable

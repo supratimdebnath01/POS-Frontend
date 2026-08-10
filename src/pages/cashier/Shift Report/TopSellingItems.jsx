@@ -53,7 +53,7 @@ const TopSellingItems = () => {
           </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 export default TopSellingItems

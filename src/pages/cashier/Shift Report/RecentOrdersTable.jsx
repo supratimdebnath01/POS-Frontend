@@ -48,7 +48,7 @@ const RecentOrdersTable = () => {
         </Table>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 export default RecentOrdersTable

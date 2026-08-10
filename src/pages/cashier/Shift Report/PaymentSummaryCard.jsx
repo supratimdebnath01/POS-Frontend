@@ -57,7 +57,7 @@ const PaymentSummaryCard = () => {
           </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 export default PaymentSummaryCard

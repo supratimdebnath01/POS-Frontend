@@ -27,7 +27,7 @@ const ShiftSummaryPage = () => {
         
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ShiftSummaryPage
