@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { X } from 'lucide-react'
 import React from 'react'
+import { Link } from 'react-router'
 
 const Sidebar = ({navItems, onClose}) => {
   return (
@@ -15,6 +16,20 @@ const Sidebar = ({navItems, onClose}) => {
       
       <nav className='space-y-2 flex-1'>
         
+        {/* {navItems.map((item)=><Link onClick={()=> {
+          if(onClose) onClose();
+        }}
+        className={`flex items-center justify-between p-3 rounded-md 
+          hover:bg-sidebar-accent transition-colors
+           ${location.pathname === item.path ? "bg-sidebar-accent text-sidebar-accent-foreground":"text-sidebar-foreground"}`}
+        key={item.path} to={item.path}>
+          <div className='flex items-center gap-3'>
+            {item.icon}
+            <span>{item.label}</span>
+
+          </div>
+        </Link>)} */}
+
 
       </nav>
       

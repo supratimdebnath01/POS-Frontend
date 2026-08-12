@@ -7,6 +7,7 @@ import RefundPage from './pages/cashier/Refund/RefundPage'
 import ShiftSummaryPage from './pages/cashier/Shift Report/ShiftSummaryPage'
 import Sidebar from './pages/cashier/sidebar/Sidebar'
 import CashierRoutes from './routes/CashierRoutes';
+import Login from './pages/Auth/Login'
 
 
 function App() {
@@ -17,10 +18,11 @@ function App() {
       {/* <ShiftSummaryPage/> */}
       {/* <OrderHistory/> */}
       {/* <RefundPage/> */}
-      <Sidebar/>
+      {/* <Sidebar/> */}
 
       <Routes>
-        <Route path='/cashier/*' element={<CashierRoutes/>}/>
+        {/* <Route path='/cashier/*' element={<CashierRoutes/>}/> */}
+        <Route path='/login' element={<Login/>}/>
       </Routes>
 
       

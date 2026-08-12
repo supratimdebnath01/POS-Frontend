@@ -25,7 +25,7 @@ const navItems=[
     label: "Returns/Refund"
   },
   {
-    path:"/",
+    path:"/cashier/shift-summary",
     icon: <ReceiptIcon size={20}/>,
     label: "Shift Summary"
   }
