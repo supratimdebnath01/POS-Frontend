@@ -42,4 +42,6 @@ const authSlice = createSlice({
             state.error= action.payload
         })
     }
-})
+});
+
+export default authSlice.reducer;

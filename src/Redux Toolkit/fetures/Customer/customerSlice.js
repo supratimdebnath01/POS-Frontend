@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { createCustomer, deleteCustomer, updateCustomer } from "./customerThunk"
+import { createCustomer, deleteCustomer, getAllCustomer, getCustomerById, updateCustomer } from "./customerThunk"
 
 const initialState={
     customers: [],
@@ -56,7 +56,49 @@ const customerSlice = createSlice({
         .addCase(deleteCustomer.pending, (state)=>{
             state.loading = true;
         })
+        .addCase(deleteCustomer.fulfilled, (state, action)=>{
+            state.loading = false,
+            state.customers = state.customers.filter(
+                (customer)=> customer.id !== action.payload
+            );
+            if(
+                state.selectedCustomer && 
+                state.selectedCustomer.id === action.payload
+            ){
+                state.selectedCustomer = null;
+            }
+        })
 
+        .addCase(deleteCustomer.rejected, (state, action)=>{
+            state.loading = false;
+            state.error = action.payload;
+        })
 
-    }
-})
+        .addCase(getCustomerById.pending, (state)=>{
+            state.loading = true;
+        })
+        .addCase(getCustomerById.fulfilled, (state, action)=>{
+            state.loading = false;
+            state.selectedCustomer = action.payload;
+        })
+        .addCase(getCustomerById.rejected, (state, action)=>{
+            state.loading = false;
+            state.error = action.payload;
+        })
+
+        .addCase(getAllCustomer.pending, (state)=>{
+            state.loading = true;
+        })
+        .addCase(getAllCustomer.fulfilled, (state, action)=>{
+            state.loading = false;
+            state.customers = action.payload;
+        })
+        .addCase(getAllCustomer.rejected, (state, action)=>{
+            state.loading = false;
+            state.error = action.payload;
+        })
+
+    },
+});
+
+export default customerSlice.reducer;
