@@ -68,3 +68,16 @@ export const getUserById = createAsyncThunk("user/getById",
         }
     }
 );
+
+export const logout = createAsyncThunk("user/logout",
+    async(_, {rejectWithValue})=>{
+        try {
+            localStorage.removeItem("jwt")
+        } catch (error) {
+            console.log("error ", error);
+            return rejectWithValue( "Failed to logout");
+            
+            
+        }
+    }
+);
