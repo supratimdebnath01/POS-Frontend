@@ -119,7 +119,7 @@ export const deleteOrder = createAsyncThunk("order/delete",
     }
 );
 
-export const getOrdersByCustomer = createAsyncThunk("order/getById",
+export const getOrdersByCustomer = createAsyncThunk("order/getByCustomer",
     async(id, {rejectWithValue})=>{
         try {
             const headers= getAuthHeaders();

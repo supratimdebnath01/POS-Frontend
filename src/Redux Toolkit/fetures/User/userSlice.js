@@ -37,7 +37,7 @@ const userSlice = createSlice({
             state.userProfile= action.payload;
 
         })
-        .addCase(getUserProfile,rejected,(state,action)=>{
+        .addCase(getUserProfile.rejected,(state,action)=>{
             state.loading= false,
             state.error=action.payload
         })

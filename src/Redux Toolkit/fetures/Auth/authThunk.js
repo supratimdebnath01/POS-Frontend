@@ -6,7 +6,7 @@ export const signup= createAsyncThunk("auth/signup",
 
         try {
             const res = await api.post("auth/signup", userData)
-            localStorage.setItem("jwt", res.data.data.jwt)
+            localStorage.setItem("jwt", res.data.jwt)
             console.log("signup success ", res.data);
             return res.data
             
@@ -22,7 +22,7 @@ export const login= createAsyncThunk("auth/login",
 
         try {
             const res = await api.post("auth/login", loginData)
-            localStorage.setItem("jwt", res.data.data.jwt)
+            localStorage.setItem("jwt", res.data.jwt)
             console.log("login success ", res.data);
             return res.data
             

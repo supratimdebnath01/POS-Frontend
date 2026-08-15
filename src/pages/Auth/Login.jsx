@@ -3,22 +3,53 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { toast } from "@/components/ui/toast";
+import { login } from "@/Redux Toolkit/fetures/Auth/authThunk";
+import { getUserProfile } from "@/Redux Toolkit/fetures/User/userThunk";
 import { ShoppingCart } from "lucide-react";
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 
 const Login = () => {
     const [forgotPasswordEmail, setForgotPasswordEmail]= useState("");
+    const dispatch=useDispatch();
+    const navigate = useNavigate();
+
 
     const [formData,setFormData] = useState({
         email:"",
         password:""
     })
     const [showForgotPassword, setShowForgotPassword]= useState(false);
-    const handleLogin=(e)=>{
+    const handleLogin=async(e)=>{
         e.preventDefault()
-        console.log("Login...", formData)
-    }
+        console.log("Login...", formData);
+
+        const resultAction = await dispatch(login(formData))
+        if(login.fulfilled.match(resultAction)){
+            toast("Login successfull..!");
+            const user=resultAction.payload.user
+            console.log("user ", user);
+            dispatch(getUserProfile(resultAction.payload.jwt))
+
+            const userRole = user.role;
+            if(userRole == "ROLE_BRNCH_CASHIER"){
+                navigate("/cashier")
+            }else if(userRole == "ROLE_STORE_MANAGER" || userRole == "ROLE_STORE_ADMIN"){
+                navigate("/store")
+            }
+            else if(userRole == "ROLE_BRANCH_MANAGER"){
+                navigate("/branch")
+            }
+            else if(userRole == "ROLE_ADMIN"){
+                navigate("/super-admin")
+            }
+            console.log("user ", user);
+            
+        }
+    };
     const handleInputChange=(e)=>{
 
         setFormData({...formData, [e.target.name]:e.target.value})
